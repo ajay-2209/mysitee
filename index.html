@@ -922,7 +922,7 @@
                 <h2>AI &amp; Data Science Student | Web Developer</h2>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#" class="btn btn-secondary" onclick="downloadResume(); return false;">Download Resume</a>
+                    <a href="#" class="btn btn-secondary" onclick="downloadResume(); return false;">View / Download Resume</a>
                 </div>
             </div>
         </div>
@@ -1105,17 +1105,17 @@
                 <div class="contact-card">
                     <div class="contact-icon">💬</div>
                     <h3>WhatsApp</h3>
-                    <a href="https://wa.me/qr/KUBUAYBDAFSWL1" target="_blank">Chat on WhatsApp</a>
+                    <a href="https://wa.me/qr/KUBUAYBDAFSWL1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">💻</div>
                     <h3>GitHub</h3>
-                    <a href="https://github.com/ajay-2209" target="_blank">@ajay-2209</a>
+                    <a href="https://github.com/ajay-2209" target="_blank" rel="noopener noreferrer">@ajay-2209</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">💼</div>
                     <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/a-j-a-y-v-abb171381" target="_blank">Connect with me</a>
+                    <a href="https://www.linkedin.com/in/a-j-a-y-v-abb171381" target="_blank" rel="noopener noreferrer">Connect with me</a>
                 </div>
             </div>
         </div>
@@ -1159,6 +1159,9 @@
     <footer>
         <p>&copy; 2025 Ajay V. All rights reserved. | Made with passion and code ✨</p>
     </footer>
+
+    <!-- PDF generation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1280,78 +1283,13 @@
             });
         }
 
-        // Download resume function
+        // Generate the resume as a PDF, open it in a new tab, and download it.
+        // Open the current resume PDF in a preview page with a manual download button.
         function downloadResume() {
-            // Create resume content
-            const resumeContent = `
-AJAY V
-AI & Data Science Student | Web Developer
-
-Contact Information:
-Email: ajayvajay51@gmail.com
-Phone: 90258 718781
-Location: Gobichettipalayam, Nambiyur – 638548
-
-Career Objective:
-Motivated and enthusiastic Computer Science student specializing in AI & Data Science, with strong interest in Web Development and Programming. Skilled in HTML, CSS, and Python basics, with passion for continuous learning. Seeking entry-level opportunity to apply knowledge and gain practical IT experience.
-
-Education:
-B.Sc Computer Science - Artificial Intelligence and Data Science
-Gobi Arts & Science College
-Expected Graduation: 2026
-
-Technical Skills:
-- Programming Languages: Python (Beginner)
-- Web Development: HTML, CSS
-- Database: Basic database concepts
-- Tools & Platforms: AI Prompt Engineering (Vertex AI)
-
-Projects:
-1. Personal Portfolio Website
-   - Created a responsive web page using HTML and CSS to showcase projects and personal details
-   - Technologies: HTML, CSS
-
-2. Python Mini Applications
-   - Built small programs for practice including calculator and to-do list applications
-   - Technologies: Python
-
-3. Sentiment Analysis
-   - Basic sentiment analysis project with fundamental propagation techniques
-   - Technologies: Python, Machine Learning
-
-Certifications:
-- Google Prompt Design (Google)
-- Google Cloud Vertex AI - 3 Badges (Google)
-- Generative AI Course - 3 Days (Outskill)
-
-Languages:
-- English
-- Tamil
-
-Hobbies:
-- Web Designing
-- Listening to Music
-- Writing Journals
-- Traveling
-- Photography
-            `;
-
-            // Create and download text file
-            const blob = new Blob([resumeContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Ajay_V_Resume.txt';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-
-            // Show feedback
-            alert('Resume downloaded successfully! 📄');
+            window.open('resume-viewer.html', '_blank', 'noopener,noreferrer');
         }
 
-        // Initialize
+                // Initialize
         window.addEventListener('load', () => {
             createStarfield();
             handleScrollAnimation();
